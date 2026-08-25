@@ -29,6 +29,7 @@ val finalFileName by CommonProperty<String>()
 val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
 val license: String by project
+val modDescription: String by project
 
 neoForge {
 	version = sc.properties["versions.neoforge"]
@@ -65,6 +66,7 @@ tasks {
 		fun target(version: String) = "[$version,)"
 		val props = buildMap {
 			register("version", version.toString())
+			register("description", modDescription)
 			register("license", license)
 			register("java", target(javaVersion.majorVersion))
 			register("neoforge", target(sc.properties["versions.neoforge"]))
