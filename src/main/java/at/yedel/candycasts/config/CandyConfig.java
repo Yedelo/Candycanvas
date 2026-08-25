@@ -11,6 +11,7 @@ public class CandyConfig {
     
     private CandyConfig() {}
 
+    private boolean enabled = true;
     private boolean shouldRandomizeStoneGeneration = true;
     private boolean shouldRandomizeCobblestoneGeneration = true;
     private boolean shouldRandomizeObsidianGeneration = true;
@@ -18,6 +19,10 @@ public class CandyConfig {
 
     public void initialize() {
 
+    }
+
+    public boolean isEnabled() {
+        return enabled;
     }
 
     public boolean shouldRandomizeStoneGeneration() {
