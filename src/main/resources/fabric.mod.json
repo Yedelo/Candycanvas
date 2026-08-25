@@ -27,7 +27,8 @@
     "java": "${java}",
     "fabricloader": "${fabricLoader}",
     "minecraft": "${minecraft}",
-    "fabric-api": "*"
+    "fabric-api": "*",
+    "supermartijn642configlib": "${smcl}"
   },
   "custom": {
     "modmenu": {

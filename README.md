@@ -10,3 +10,7 @@
 
 Randomize the outcome of water/lava collisions
 
+# Dependencies
+
+- [SuperMartijn642's Config Lib](https://modrinth.com/mod/supermartijn642s-config-lib)
+

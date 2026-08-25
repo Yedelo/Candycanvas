@@ -5,6 +5,9 @@ import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.invoke
 import kotlin.reflect.KProperty
 import me.modmuss50.mpp.ReleaseType
+import org.gradle.internal.Actions.set
+import org.gradle.internal.Transformers.type
+import org.gradle.internal.classpath.Instrumented.start
 
 plugins {
 	id("net.neoforged.moddev") version "2.0.140"
@@ -15,6 +18,7 @@ repositories {
 	maven("https://maven.neoforged.net/releases/")
 	maven("https://maven.terraformersmc.com/releases/")
 	maven("https://maven.isxander.dev/releases")
+	maven("https://api.modrinth.com/maven")
 }
 
 // in stonecutter.gradle.kts
@@ -25,11 +29,16 @@ class CommonProperty<T> {
 val rangedVersion by CommonProperty<Boolean>()
 val maxMc by CommonProperty<String?>()
 val javaVersion by CommonProperty<JavaVersion>()
+val smclVersion by CommonProperty<String>()
 val finalFileName by CommonProperty<String>()
 val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
 val license: String by project
 val modDescription: String by project
+
+dependencies {
+	implementation("maven.modrinth:supermartijn642s-config-lib:$smclVersion-neoforge-mc${sc.current.version}")
+}
 
 neoForge {
 	version = sc.properties["versions.neoforge"]
@@ -64,13 +73,14 @@ tasks {
 		fun target(version: String) = "[$version,)"
 		val props = buildMap {
 			register("version", version.toString())
-			register("description", modDescription)
+			register("modDescription", modDescription)
 			register("license", license)
 			register("java", target(javaVersion.majorVersion))
 			register("neoforge", target(sc.properties["versions.neoforge"]))
 			val minecraftDependency =
 				if (rangedVersion) "[${sc.current.version},${maxMc}]" else "[${sc.current.version}]"
 			register("minecraft", minecraftDependency)
+			register("smcl", target(smclVersion))
 		}
 		filesMatching(listOf("META-INF/neoforge.mods.toml")) { expand(props) }
 

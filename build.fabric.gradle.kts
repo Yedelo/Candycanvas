@@ -14,6 +14,7 @@ plugins {
 repositories {
 	maven("https://maven.terraformersmc.com/releases/")
 	maven("https://maven.isxander.dev/releases")
+	maven("https://api.modrinth.com/maven")
 }
 
 // in stonecutter.gradle.kts
@@ -24,6 +25,7 @@ class CommonProperty<T> {
 val rangedVersion by CommonProperty<Boolean>()
 val maxMc by CommonProperty<String?>()
 val javaVersion by CommonProperty<JavaVersion>()
+val smclVersion by CommonProperty<String>()
 val finalFileName by CommonProperty<String>()
 val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
@@ -35,8 +37,7 @@ dependencies {
 	loomx.applyMojangMappings()
 	modImplementation("net.fabricmc:fabric-loader:${property("versions.fabricLoader")}")
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${property("versions.fabricApi")}")
-
-	modApi("com.terraformersmc:modmenu:${property("versions.modMenu")}")
+	modImplementation("maven.modrinth:supermartijn642s-config-lib:$smclVersion-fabric-mc${sc.current.version}")
 }
 
 loom {
@@ -68,6 +69,7 @@ tasks {
 			val minecraftDependency =
 				if (rangedVersion) ">=${sc.current.version} <=${maxMc}" else sc.current.version
 			register("minecraft", minecraftDependency)
+			register("smcl", target(smclVersion))
 		}
 		filesMatching(listOf("fabric.mod.json")) { expand(props) }
 

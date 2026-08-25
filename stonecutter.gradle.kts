@@ -49,6 +49,7 @@ stonecutter parameters {
             else -> JavaVersion.VERSION_1_8
         }
     })
+    val smclVersion by Declare(properties.get<String>("versions.smcl"))
 
     val rangedVersion by Declare(properties.get<String>("versioning") == "range")
     val maxMc by Declare(if (rangedVersion) properties.get<String>("mc.max") else null)
