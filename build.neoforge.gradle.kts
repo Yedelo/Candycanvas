@@ -25,15 +25,10 @@ class CommonProperty<T> {
 val rangedVersion by CommonProperty<Boolean>()
 val maxMc by CommonProperty<String?>()
 val javaVersion by CommonProperty<JavaVersion>()
-val yaclVersion by CommonProperty<String>()
 val finalFileName by CommonProperty<String>()
 val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
 val license: String by project
-
-dependencies {
-	implementation("dev.isxander:yet-another-config-lib:$yaclVersion")
-}
 
 neoForge {
 	version = sc.properties["versions.neoforge"]
@@ -41,15 +36,19 @@ neoForge {
 	interfaceInjectionData.from("../../neoforge.injections.json")
 
 	mods {
-		register("advantimations") {
+		register("candycasts") {
 			sourceSet(sourceSets.main.get())
 		}
 	}
 
 	runs {
 		register("client") {
-			gameDirectory = file("../../run/")
+			gameDirectory = file("../../run/client")
 			client()
+		}
+		register("server") {
+			gameDirectory = file("../../run/server")
+			server()
 		}
 	}
 }
@@ -61,13 +60,12 @@ tasks {
 			set(key, value)
 		}
 		exclude("fabric.mod.json")
-		exclude("advantimations.classtweaker")
+		exclude("candycasts.classtweaker")
 
 		fun target(version: String) = "[$version,)"
 		val props = buildMap {
 			register("version", version.toString())
 			register("license", license)
-			register("yacl", target(yaclVersion))
 			register("java", target(javaVersion.majorVersion))
 			register("neoforge", target(sc.properties["versions.neoforge"]))
 			val minecraftDependency =
@@ -77,7 +75,7 @@ tasks {
 		filesMatching(listOf("META-INF/neoforge.mods.toml")) { expand(props) }
 
 		val mixinJava = "JAVA_${javaVersion.majorVersion}"
-		filesMatching("advantimations.mixins.json5") { expand("mixinJava" to mixinJava) }
+		filesMatching("candycasts.mixins.json5") { expand("mixinJava" to mixinJava) }
 
         outputs.upToDateWhen { false }
 	}
@@ -103,8 +101,8 @@ publishMods {
 	modrinth {
 		displayName.set("${project.version.toString()} for NeoForge ${sc.current.version}")
 		accessToken = System.getenv("MODRINTH_TOKEN")
-		projectId.set("c0aI2COX")
-		environment = CLIENT_ONLY
+		projectId.set("SzgU2Fvt")
+		environment = SERVER_ONLY
 		projectDescription = modrinthReadme
 		if (rangedVersion) {
 			minecraftVersionRange {
@@ -115,8 +113,6 @@ publishMods {
 		else {
 			minecraftVersions.add(sc.current.version)
 		}
-
-		requires("yacl")
 	}
 }
 

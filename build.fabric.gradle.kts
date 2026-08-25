@@ -24,7 +24,6 @@ class CommonProperty<T> {
 val rangedVersion by CommonProperty<Boolean>()
 val maxMc by CommonProperty<String?>()
 val javaVersion by CommonProperty<JavaVersion>()
-val yaclVersion by CommonProperty<String>()
 val finalFileName by CommonProperty<String>()
 val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
@@ -37,12 +36,11 @@ dependencies {
 	modImplementation("net.fabricmc.fabric-api:fabric-api:${property("versions.fabricApi")}")
 
 	modApi("com.terraformersmc:modmenu:${property("versions.modMenu")}")
-	modImplementation("dev.isxander:yet-another-config-lib:$yaclVersion")
 }
 
 loom {
 	accessWidenerPath = sc.process(
-		rootProject.file("src/main/resources/advantimations.classtweaker"),
+		rootProject.file("src/main/resources/candycasts.classtweaker"),
 		"build/processed.classtweaker"
 	)
 	runConfigs.all {
@@ -62,7 +60,6 @@ tasks {
 		val props = buildMap {
 			register("version", version.toString())
 			register("license", license)
-			register("yacl", target(yaclVersion))
 			register("java", target(javaVersion.majorVersion))
 			register("fabricLoader", target(sc.properties["versions.fabricLoader"]))
 			val minecraftDependency =
@@ -72,7 +69,7 @@ tasks {
 		filesMatching(listOf("fabric.mod.json")) { expand(props) }
 
 		val mixinJava = "JAVA_${javaVersion.majorVersion}"
-		filesMatching("advantimations.mixins.json5") { expand("mixinJava" to mixinJava) }
+		filesMatching("candycasts.mixins.json5") { expand("mixinJava" to mixinJava) }
 
         outputs.upToDateWhen { false }
 	}
@@ -98,8 +95,8 @@ publishMods {
 	modrinth {
 		displayName.set("${project.version.toString()} for Fabric ${sc.current.version}")
 		accessToken = System.getenv("MODRINTH_TOKEN")
-		projectId.set("c0aI2COX")
-		environment = CLIENT_ONLY
+		projectId.set("SzgU2Fvt")
+		environment = SERVER_ONLY
 		projectDescription = modrinthReadme
 		if (rangedVersion) {
 			minecraftVersionRange {
@@ -112,8 +109,6 @@ publishMods {
 		}
 
 		requires("fabric-api")
-		requires("yacl")
-		optional("modmenu")
 	}
 }
 

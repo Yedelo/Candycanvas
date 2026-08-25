@@ -13,8 +13,6 @@ stonecutter active "26.2-fabric"
 stonecutter parameters {
     val loader = current.project.split("-")[1]
 
-    constants["spear"] = current.parsed >= "1.21.11"
-
     constants {
         match(loader, "fabric", "neoforge")
     }
@@ -41,11 +39,6 @@ stonecutter parameters {
         operator fun getValue(thisRef: Any?, property: KProperty<*>): T = value
     }
 
-    val yaclVersion by Declare(run {
-        val rawVersionProperty = properties.get<String>("versions.yacl")
-        if (rawVersionProperty.endsWith(loader)) rawVersionProperty else "$rawVersionProperty+${current.project}"
-    })
-
     val javaVersion by Declare(run {
         val mc = current.parsed
         when {
@@ -61,11 +54,9 @@ stonecutter parameters {
     val maxMc by Declare(if (rangedVersion) properties.get<String>("mc.max") else null)
 
     val minecraftTarget by Declare(if (rangedVersion) "${current.version}-$maxMc" else current.version)
-    val finalFileName by Declare("Advantimations-$version+$minecraftTarget-$loader.jar")
+    val finalFileName by Declare("Candycasts-$version+$minecraftTarget-$loader.jar")
 
     val modrinthReadme by Declare(rootProject.file("README.md").readText()
-        .replace("src/main/resources/assets/advantimations/advantimations.png", modrinthLogoLink)
+        .replace("src/main/resources/assets/candycasts/candycasts.png", modrinthLogoLink)
     )
 }
-
-// there is a lot of repetition for publishMods between the two buildscripts, but it's just not worth the effort of deduplicating
