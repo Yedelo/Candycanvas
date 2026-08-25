@@ -15,7 +15,7 @@ public class Candy {
         blocks = BuiltInRegistries.BLOCK.stream().toList();
     }
 
-    private static Block randomBlock() {
+    public static Block randomBlock() {
         return blocks.get(random.nextInt(blocks.size()));
     }
 
