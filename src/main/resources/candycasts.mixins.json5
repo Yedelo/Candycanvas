@@ -4,6 +4,10 @@
   "compatibilityLevel": "${mixinJava}",
   // hello comment
   /* multiline comment */
+  "mixins": [
+    "LavaFluidMixin",
+    "LiquidBlockMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
