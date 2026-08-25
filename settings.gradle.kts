@@ -23,6 +23,7 @@ stonecutter {
 		}
 
 		registerProject("26.2", "fabric")
+		registerProject("26.2", "neoforge")
 		vcsVersion = "26.2-fabric"
 	}
 }
