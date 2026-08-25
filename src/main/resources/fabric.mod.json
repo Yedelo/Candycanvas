@@ -23,7 +23,6 @@
   "mixins": [
     "candycasts.mixins.json5"
   ],
-  "accessWidener": "candycasts.classtweaker",
   "depends": {
     "java": "${java}",
     "fabricloader": "${fabricLoader}",

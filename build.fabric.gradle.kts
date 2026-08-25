@@ -40,10 +40,6 @@ dependencies {
 }
 
 loom {
-	accessWidenerPath = sc.process(
-		rootProject.file("src/main/resources/candycasts.classtweaker"),
-		"build/processed.classtweaker"
-	)
 	runConfigs {
 		"client" {
 			runDir = "../../run/client"

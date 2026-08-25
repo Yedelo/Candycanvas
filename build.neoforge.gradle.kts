@@ -34,8 +34,6 @@ val modDescription: String by project
 neoForge {
 	version = sc.properties["versions.neoforge"]
 
-	interfaceInjectionData.from("../../neoforge.injections.json")
-
 	mods {
 		register("candycasts") {
 			sourceSet(sourceSets.main.get())
