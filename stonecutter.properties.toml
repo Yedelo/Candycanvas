@@ -1,20 +1,12 @@
 versions.fabricLoader = "0.19.3"
 versions.smcl = "1.1.8"
 
-["26.2-fabric"]
-versioning = "single"
-versions.fabricApi = "0.153.0+26.2"
-versions.modMenu = "20.0.1"
-["26.2-neoforge"]
-versioning = "single"
-versions.neoforge = "26.2.0.48-beta"
-
 ["26.1-fabric"]
 versioning = "range"
-mc.max = "26.1.2"
+mc.max = "26.2"
 versions.fabricApi = "0.145.1+26.1"
 versions.modMenu = "18.0.0"
 ["26.1-neoforge"]
 versioning = "range"
-mc.max = "26.1.2"
+mc.max = "26.2"
 versions.neoforge = "26.1.0.19-beta"

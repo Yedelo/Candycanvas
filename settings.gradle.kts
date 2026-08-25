@@ -18,12 +18,11 @@ loomx.loomVersion = "1.16-SNAPSHOT"
 
 stonecutter {
 	create(rootProject) {
-		fun registerProject(versionString: String, loader: String) {
-			version("$versionString-$loader", versionString).buildscript("build.$loader.gradle.kts")
+		fun registerProject(versionString: String, vararg loaders: String) {
+			for (loader in loaders) version("$versionString-$loader", versionString).buildscript("build.$loader.gradle.kts")
 		}
 
-		registerProject("26.2", "fabric")
-		registerProject("26.2", "neoforge")
-		vcsVersion = "26.2-fabric"
+		registerProject("26.1", "fabric", "neoforge")
+		vcsVersion = "26.1-fabric"
 	}
 }
