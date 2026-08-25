@@ -1,12 +1,11 @@
 package at.yedel.candycasts;
 
 
-
-/*? if fabric {*/
 import at.yedel.candycasts.config.CandyConfig;
-import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+/*? if fabric {*/
+import net.fabricmc.api.ModInitializer;
     /*?} else if neoforge {*/
 /*import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
