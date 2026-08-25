@@ -13,8 +13,8 @@ public class CandyConfig {
 
     private boolean enabled = true;
     private boolean shouldRandomizeStoneGeneration = true;
-    private boolean shouldRandomizeCobblestoneGeneration = true;
     private boolean shouldRandomizeObsidianGeneration = true;
+    private boolean shouldRandomizeCobblestoneGeneration = true;
     private boolean shouldRandomizeBasaltGeneration = true;
 
     public void initialize() {
@@ -29,12 +29,12 @@ public class CandyConfig {
         return shouldRandomizeStoneGeneration;
     }
 
-    public boolean shouldRandomizeCobblestoneGeneration() {
-        return shouldRandomizeCobblestoneGeneration;
-    }
-
     public boolean shouldRandomizeObsidianGeneration() {
         return shouldRandomizeObsidianGeneration;
+    }
+
+    public boolean shouldRandomizeCobblestoneGeneration() {
+        return shouldRandomizeCobblestoneGeneration;
     }
 
     public boolean shouldRandomizeBasaltGeneration() {
