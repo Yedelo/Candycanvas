@@ -14,9 +14,9 @@
   },
   "license": "${license}",
   "icon": "assets/candycasts/candycasts.png",
-  "environment": "client",
+  "environment": "*",
   "entrypoints": {
-    "client": [
+    "main": [
       "at.yedel.candycasts.Candycasts"
     ]
   },
@@ -28,7 +28,7 @@
     "java": "${java}",
     "fabricloader": "${fabricLoader}",
     "minecraft": "${minecraft}",
-    "fabric-api": "*",
+    "fabric-api": "*"
   },
   "custom": {
     "modmenu": {

@@ -3,8 +3,10 @@ package at.yedel.candycasts;
 
 
 /*? if fabric {*/
-import net.fabricmc.api.ClientModInitializer;
-/*?} else if neoforge {*/
+import net.fabricmc.api.ModInitializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+    /*?} else if neoforge {*/
 /*import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
     *//*?}*/
@@ -13,15 +15,21 @@ import net.neoforged.fml.common.Mod;
 
 // Maud
 /*? if neoforge */ //@Mod("candycasts")
-public class Candycasts /*? if fabric {*/implements ClientModInitializer/*?}*/ {
+public class Candycasts /*? if fabric {*/implements ModInitializer/*?}*/ {
+	public static final Logger lavalog = LoggerFactory.getLogger("Candycasts");
+
+	private void initialize() {
+		lavalog.info("Candycasts!");
+	}
+
 	/*? if fabric {*/
 	@Override
-	public void onInitializeClient() {
-		
+	public void onInitialize() {
+		initialize();
 	}
 	/*?} elif neoforge {*/
 	/*public Candycasts(ModContainer container) {
-		
+		initialize();
 	}
 	*//*?}*/
 }
