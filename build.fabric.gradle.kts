@@ -44,8 +44,13 @@ loom {
 		rootProject.file("src/main/resources/candycasts.classtweaker"),
 		"build/processed.classtweaker"
 	)
-	runConfigs.all {
-		runDir = "../../run"
+	runConfigs {
+		"client" {
+			runDir = "../../run/client"
+		}
+		"server" {
+			runDir = "../../run/server"
+		}
 	}
 }
 
