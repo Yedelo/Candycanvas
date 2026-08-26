@@ -114,6 +114,7 @@ publishMods {
 		}
 
 		requires("fabric-api")
+		requires("supermartijn642s-config-lib")
 	}
 }
 

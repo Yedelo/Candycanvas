@@ -123,6 +123,8 @@ publishMods {
 		else {
 			minecraftVersions.add(sc.current.version)
 		}
+
+		requires("supermartijn642s-config-lib")
 	}
 }
 
