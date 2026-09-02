@@ -18,13 +18,13 @@ public class CandyConfig {
     
     private CandyConfig() {}
 
-    private Supplier<Boolean> enabled;
+    public Supplier<Boolean> enabled;
 
-    private Supplier<Boolean> liquidCollisions;
-    private Supplier<Boolean> randomizeStoneGeneration;
-    private Supplier<Boolean> randomizeObsidianGeneration;
-    private Supplier<Boolean> randomizeCobblestoneGeneration;
-    private Supplier<Boolean> randomizeBasaltGeneration;
+    public Supplier<Boolean> liquidCollisions;
+    public Supplier<Boolean> randomizeStoneGeneration;
+    public Supplier<Boolean> randomizeObsidianGeneration;
+    public Supplier<Boolean> randomizeCobblestoneGeneration;
+    public Supplier<Boolean> randomizeBasaltGeneration;
 
     public void initialize() {
         IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycanvas", "Candycanvas", false);
@@ -37,25 +37,5 @@ public class CandyConfig {
         randomizeBasaltGeneration = builder.comment("Whether to randomize the generation of blocks in place of basalt.").define("randomizeBasaltGeneration", true);
         builder.pop();
         builder.build();
-    }
-
-    public boolean isEnabled() {
-        return enabled.get();
-    }
-
-    public boolean shouldRandomizeStoneGeneration() {
-        return randomizeStoneGeneration.get();
-    }
-
-    public boolean shouldRandomizeObsidianGeneration() {
-        return randomizeObsidianGeneration.get();
-    }
-
-    public boolean shouldRandomizeCobblestoneGeneration() {
-        return randomizeCobblestoneGeneration.get();
-    }
-
-    public boolean shouldRandomizeBasaltGeneration() {
-        return randomizeBasaltGeneration.get();
     }
 }

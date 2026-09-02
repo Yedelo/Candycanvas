@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class LiquidBlockMixin {
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;OBSIDIAN:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
     private Block candycanvas$randomizeObsidianGeneration(Block original) {
-        if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeObsidianGeneration()) {
+        if (CandyConfig.getInstance().enabled.get() && CandyConfig.getInstance().randomizeObsidianGeneration.get()) {
             return Candy.randomBlock();
         }
         return original;
@@ -25,7 +25,7 @@ public abstract class LiquidBlockMixin {
 
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;COBBLESTONE:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
     private Block candycanvas$randomizeCobblestoneGeneration(Block original) {
-        if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeCobblestoneGeneration()) {
+        if (CandyConfig.getInstance().enabled.get() && CandyConfig.getInstance().randomizeCobblestoneGeneration.get()) {
             return Candy.randomBlock();
         }
         return original;
@@ -33,7 +33,7 @@ public abstract class LiquidBlockMixin {
 
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;BASALT:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
     private Block candycanvas$randomizeBasaltGeneration(Block original) {
-        if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeBasaltGeneration()) {
+        if (CandyConfig.getInstance().enabled.get() && CandyConfig.getInstance().randomizeBasaltGeneration.get()) {
             return Candy.randomBlock();
         }
         return original;
