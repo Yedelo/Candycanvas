@@ -6,7 +6,8 @@
   /* multiline comment */
   "mixins": [
     "LavaFluidMixin",
-    "LiquidBlockMixin"
+    "LiquidBlockMixin",
+    "BlockBehaviourMixin"
   ],
   "injectors": {
     "defaultRequire": 1

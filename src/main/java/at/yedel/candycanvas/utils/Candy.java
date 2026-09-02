@@ -15,11 +15,19 @@ public class Candy {
         blocks = BuiltInRegistries.BLOCK.stream().toList();
     }
 
-    public static Block randomBlock() {
+    private static Block randomBlock() {
         return blocks.get(random.nextInt(blocks.size()));
     }
 
-    public static BlockState randomBlockState() {
+    private static BlockState randomBlockState() {
         return randomBlock().defaultBlockState();
+    }
+
+    public static Block candyBlock() {
+        return randomBlock();
+    }
+
+    public static BlockState candyBlockState() {
+        return randomBlockState();
     }
 }
