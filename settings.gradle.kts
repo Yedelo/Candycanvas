@@ -22,7 +22,7 @@ stonecutter {
 			for (loader in loaders) version("$versionString-$loader", versionString).buildscript("build.$loader.gradle.kts")
 		}
 
-		registerProject("26.1", "fabric", "neoforge")
+		registerProject("26.1", "fabric")
 		vcsVersion = "26.1-fabric"
 	}
 }

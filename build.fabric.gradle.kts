@@ -61,7 +61,6 @@ tasks {
 			inputs.property(key, value)
 			set(key, value)
 		}
-		exclude("META-INF/neoforge.mods.toml")
 
 		fun target(version: String) = ">=$version"
 		val props = buildMap {
