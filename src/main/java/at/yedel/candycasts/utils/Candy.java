@@ -1,4 +1,4 @@
-package at.yedel.candycasts;
+package at.yedel.candycasts.utils;
 
 import java.util.List;
 import java.util.Random;

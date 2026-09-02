@@ -2,7 +2,7 @@ package at.yedel.candycasts.mixin;
 
 
 
-import at.yedel.candycasts.Candy;
+import at.yedel.candycasts.utils.Candy;
 import at.yedel.candycasts.config.CandyConfig;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.level.block.Block;
