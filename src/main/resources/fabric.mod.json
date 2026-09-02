@@ -1,27 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "candycasts",
+  "id": "${modId}",
   "version": "${version}",
-  "name": "Candycasts",
+  "name": "${modName}",
   "description": "${modDescription}",
   "authors": [
     "Yedel"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/candycasts",
-    "issues": "https://github.com/Yedelo/Candycasts/issues",
-    "sources": "https://github.com/Yedelo/Candycasts"
+    "homepage": "https://modrinth.com/mod/${modId}",
+    "issues": "https://github.com/Yedelo/${modName}/issues",
+    "sources": "https://github.com/Yedelo/${modName}"
   },
   "license": "${license}",
-  "icon": "assets/candycasts/candycasts.png",
+  "icon": "${modIcon}",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "at.yedel.candycasts.Candycasts"
+      "at.yedel.${modId}.${modName}"
     ]
   },
   "mixins": [
-    "candycasts.mixins.json5"
+    "${modId}.mixins.json5"
   ],
   "depends": {
     "java": "${java}",
@@ -33,8 +33,8 @@
   "custom": {
     "modmenu": {
       "links": {
-        "modmenu.github_releases": "https://github.com/Yedelo/Candycasts/releases/",
-        "modmenu.modrinth": "https://modrinth.com/mod/candycasts"
+        "modmenu.github_releases": "https://github.com/Yedelo/${modName}/releases/",
+        "modmenu.modrinth": "https://modrinth.com/mod/${modId}"
       }
     }
   }

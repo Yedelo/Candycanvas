@@ -1,32 +1,32 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
 license = "${license}"
-issueTrackerURL = "https://github.com/Yedelo/Candycasts/issues"
+issueTrackerURL = "https://github.com/Yedelo/${modName}/issues"
 
 [[mods]]
-modId = "candycasts"
+modId = "${modId}"
 version = "${version}"
-displayName = "Candycasts"
+displayName = "${modName}"
 description = "${modDescription}"
-logoFile = "assets/candycasts/candycasts.png"
+logoFile = "${modIcon}"
 logoBlur = false
 authors = "Yedel"
-displayURL = "https://modrinth.com/mod/candycasts/"
+displayURL = "https://modrinth.com/mod/${modId}/"
 
 [[mixins]]
-config = "candycasts.mixins.json5"
+config = "${modId}.mixins.json5"
 
-[features.candycasts]
+[features.${modId}]
 javaVersion = "${java}"
 
-[[dependencies.candycasts]]
+[[dependencies.${modId}]]
 modId = "neoforge"
 versionRange = "${neoforge}"
 
-[[dependencies.candycasts]]
+[[dependencies.${modId}]]
 modId = "minecraft"
 versionRange = "${minecraft}"
 
-[[dependencies.candycasts]]
+[[dependencies.${modId}]]
 modId = "supermartijn642configlib"
 versionRange = "${smcl}"

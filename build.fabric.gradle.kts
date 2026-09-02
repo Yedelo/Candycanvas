@@ -21,22 +21,26 @@ repositories {
 class CommonProperty<T> {
 	operator fun getValue(thisRef: Any?, property: KProperty<*>): T = (rootProject.extra[sc.current.project] as Map<String, Any?>)[property.name] as T
 }
-
+val modName: String by project
+val modId: String by project
+val modDescription: String by project
+val modIcon: String by project
+val modrinthId: String by project
+val modrinthLogoLink: String by project
+val versionType: String by project
+val license: String by project
 val rangedVersion by CommonProperty<Boolean>()
 val maxMc by CommonProperty<String?>()
 val javaVersion by CommonProperty<JavaVersion>()
 val smclVersion by CommonProperty<String>()
 val finalFileName by CommonProperty<String>()
-val versionType: String by project
 val modrinthReadme by CommonProperty<String>()
-val license: String by project
-val modDescription: String by project
 
 dependencies {
 	minecraft("com.mojang:minecraft:${sc.current.version}")
 	loomx.applyMojangMappings()
-	modImplementation("net.fabricmc:fabric-loader:${property("versions.fabricLoader")}")
-	modImplementation("net.fabricmc.fabric-api:fabric-api:${property("versions.fabricApi")}")
+	modImplementation("net.fabricmc:fabric-loader:${sc.properties.get("versions.fabricLoader")}")
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${sc.properties.get("versions.fabricApi")}")
 	modImplementation("maven.modrinth:supermartijn642s-config-lib:$smclVersion-fabric-mc${sc.current.version}")
 }
 
@@ -61,8 +65,11 @@ tasks {
 
 		fun target(version: String) = ">=$version"
 		val props = buildMap {
-			register("version", version.toString())
+			register("modName", modName)
+			register("modId", modId)
 			register("modDescription", modDescription)
+			register("modIcon", modIcon)
+			register("version", version.toString())
 			register("license", license)
 			register("java", target(javaVersion.majorVersion))
 			register("fabricLoader", target(sc.properties["versions.fabricLoader"]))
@@ -70,11 +77,9 @@ tasks {
 				if (rangedVersion) ">=${sc.current.version} <=${maxMc}" else sc.current.version
 			register("minecraft", minecraftDependency)
 			register("smcl", target(smclVersion))
+			register("mixinJava", "JAVA_${javaVersion.majorVersion}")
 		}
-		filesMatching(listOf("fabric.mod.json")) { expand(props) }
-
-		val mixinJava = "JAVA_${javaVersion.majorVersion}"
-		filesMatching("candycasts.mixins.json5") { expand("mixinJava" to mixinJava) }
+		filesMatching(listOf("fabric.mod.json", "$modId.mixins.json5")) { expand(props) }
 
         outputs.upToDateWhen { false }
 	}
@@ -100,7 +105,7 @@ publishMods {
 	modrinth {
 		displayName.set("${project.version.toString()} for Fabric ${sc.current.version}")
 		accessToken = System.getenv("MODRINTH_TOKEN")
-		projectId.set("SzgU2Fvt")
+		projectId.set(modrinthId)
 		environment = SERVER_ONLY
 		projectDescription = modrinthReadme
 		if (rangedVersion) {
