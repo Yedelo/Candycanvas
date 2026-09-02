@@ -19,6 +19,8 @@ public class CandyConfig {
     private CandyConfig() {}
 
     private Supplier<Boolean> enabled;
+
+    private Supplier<Boolean> liquidCollisions;
     private Supplier<Boolean> randomizeStoneGeneration;
     private Supplier<Boolean> randomizeObsidianGeneration;
     private Supplier<Boolean> randomizeCobblestoneGeneration;
@@ -27,10 +29,13 @@ public class CandyConfig {
     public void initialize() {
         IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycanvas", "Candycanvas", false);
         enabled = builder.comment("Global toggle for the mod.").define("enabled", true);
+        builder.push("Liquid Collisions").categoryComment("Randomize the outcome of water/lava collisions");
+        liquidCollisions = builder.comment("Toggle liquid collisions.").define("liquidCollisions", true);
         randomizeStoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of stone.").define("randomizeStoneGeneration", true);
         randomizeObsidianGeneration = builder.comment("Whether to randomize the generation of blocks in place of obsidian.").define("randomizeObsidianGeneration", true);
         randomizeCobblestoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of cobblestone.").define("randomizeCobblestoneGeneration", true);
         randomizeBasaltGeneration = builder.comment("Whether to randomize the generation of blocks in place of basalt.").define("randomizeBasaltGeneration", true);
+        builder.pop();
         builder.build();
     }
 
