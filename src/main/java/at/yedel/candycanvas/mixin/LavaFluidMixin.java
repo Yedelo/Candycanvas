@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 public abstract class LavaFluidMixin {
     @ModifyExpressionValue(method = "spreadTo", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;STONE:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
     private Block candycanvas$randomizeStoneGeneration(Block original) {
-        if (CandyConfig.getInstance().enabled.get() && CandyConfig.getInstance().randomizeStoneGeneration.get()) {
+        if (CandyConfig.getInstance().enabled.get() && CandyConfig.getInstance().liquidCollisions.get() && CandyConfig.getInstance().randomizeStoneGeneration.get()) {
             return Candy.randomBlock();
         }
         return original;
