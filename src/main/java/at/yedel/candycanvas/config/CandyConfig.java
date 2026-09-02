@@ -1,4 +1,4 @@
-package at.yedel.candycasts.config;
+package at.yedel.candycanvas.config;
 
 
 
@@ -25,7 +25,7 @@ public class CandyConfig {
     private Supplier<Boolean> shouldRandomizeBasaltGeneration;
 
     public void initialize() {
-        IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycasts", "Candycasts", false);
+        IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycanvas", "Candycanvas", false);
         enabled = builder.comment("Global toggle for the mod.").define("enabled", true);
         shouldRandomizeStoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of stone.").define("shouldRandomizeStoneGeneration", true);
         shouldRandomizeObsidianGeneration = builder.comment("Whether to randomize the generation of blocks in place of obsidian.").define("shouldRandomizeObsidianGeneration", true);

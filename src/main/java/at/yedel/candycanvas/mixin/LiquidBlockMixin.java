@@ -1,9 +1,9 @@
-package at.yedel.candycasts.mixin;
+package at.yedel.candycanvas.mixin;
 
 
 
-import at.yedel.candycasts.utils.Candy;
-import at.yedel.candycasts.config.CandyConfig;
+import at.yedel.candycanvas.utils.Candy;
+import at.yedel.candycanvas.config.CandyConfig;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(LiquidBlock.class)
 public abstract class LiquidBlockMixin {
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;OBSIDIAN:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
-    private Block candycasts$randomizeObsidianGeneration(Block original) {
+    private Block candycanvas$randomizeObsidianGeneration(Block original) {
         if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeObsidianGeneration()) {
             return Candy.randomBlock();
         }
@@ -24,7 +24,7 @@ public abstract class LiquidBlockMixin {
     }
 
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;COBBLESTONE:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
-    private Block candycasts$randomizeCobblestoneGeneration(Block original) {
+    private Block candycanvas$randomizeCobblestoneGeneration(Block original) {
         if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeCobblestoneGeneration()) {
             return Candy.randomBlock();
         }
@@ -32,7 +32,7 @@ public abstract class LiquidBlockMixin {
     }
 
     @ModifyExpressionValue(method = "shouldSpreadLiquid", at = @At(value = "FIELD", target = "Lnet/minecraft/world/level/block/Blocks;BASALT:Lnet/minecraft/world/level/block/Block;", opcode = Opcodes.GETSTATIC))
-    private Block candycasts$randomizeBasaltGeneration(Block original) {
+    private Block candycanvas$randomizeBasaltGeneration(Block original) {
         if (CandyConfig.getInstance().isEnabled() && CandyConfig.getInstance().shouldRandomizeBasaltGeneration()) {
             return Candy.randomBlock();
         }

@@ -1,7 +1,7 @@
-package at.yedel.candycasts;
+package at.yedel.candycanvas;
 
 
-import at.yedel.candycasts.config.CandyConfig;
+import at.yedel.candycanvas.config.CandyConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 /*? if fabric {*/
@@ -14,13 +14,13 @@ import net.neoforged.fml.common.Mod;
 
 
 // Maud
-/*? if neoforge */ //@Mod("candycasts")
-public class Candycasts /*? if fabric {*/implements ModInitializer/*?}*/ {
-	public static final Logger lavalog = LoggerFactory.getLogger("Candycasts");
+/*? if neoforge */ //@Mod("candycanvas")
+public class Candycanvas /*? if fabric {*/implements ModInitializer/*?}*/ {
+	public static final Logger lavalog = LoggerFactory.getLogger("Candycanvas");
 
 	private void initialize() {
 		CandyConfig.getInstance().initialize();
-		lavalog.info("Candycasts!");
+		lavalog.info("Candycanvas!");
 	}
 
 	/*? if fabric {*/
@@ -29,7 +29,7 @@ public class Candycasts /*? if fabric {*/implements ModInitializer/*?}*/ {
 		initialize();
 	}
 	/*?} elif neoforge {*/
-	/*public Candycasts(ModContainer container) {
+	/*public Candycanvas(ModContainer container) {
 		initialize();
 	}
 	*//*?}*/

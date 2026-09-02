@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "at.yedel.${modId}.mixin",
+  "package": "at.yedel.candycanvas.mixin",
   "compatibilityLevel": "${mixinJava}",
   // hello comment
   /* multiline comment */
