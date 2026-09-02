@@ -1,3 +1,5 @@
-## **1.0.0**
+## **2.0.0**
 
-Initial release
+- Renamed mod to Candycanvas
+- Added randomized explosions
+- Moved different features into different categories
