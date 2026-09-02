@@ -19,18 +19,18 @@ public class CandyConfig {
     private CandyConfig() {}
 
     private Supplier<Boolean> enabled;
-    private Supplier<Boolean> shouldRandomizeStoneGeneration;
-    private Supplier<Boolean> shouldRandomizeObsidianGeneration;
-    private Supplier<Boolean> shouldRandomizeCobblestoneGeneration;
-    private Supplier<Boolean> shouldRandomizeBasaltGeneration;
+    private Supplier<Boolean> randomizeStoneGeneration;
+    private Supplier<Boolean> randomizeObsidianGeneration;
+    private Supplier<Boolean> randomizeCobblestoneGeneration;
+    private Supplier<Boolean> randomizeBasaltGeneration;
 
     public void initialize() {
         IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycanvas", "Candycanvas", false);
         enabled = builder.comment("Global toggle for the mod.").define("enabled", true);
-        shouldRandomizeStoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of stone.").define("shouldRandomizeStoneGeneration", true);
-        shouldRandomizeObsidianGeneration = builder.comment("Whether to randomize the generation of blocks in place of obsidian.").define("shouldRandomizeObsidianGeneration", true);
-        shouldRandomizeCobblestoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of cobblestone.").define("shouldRandomizeCobblestoneGeneration", true);
-        shouldRandomizeBasaltGeneration = builder.comment("Whether to randomize the generation of blocks in place of basalt.").define("shouldRandomizeBasaltGeneration", true);
+        randomizeStoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of stone.").define("randomizeStoneGeneration", true);
+        randomizeObsidianGeneration = builder.comment("Whether to randomize the generation of blocks in place of obsidian.").define("randomizeObsidianGeneration", true);
+        randomizeCobblestoneGeneration = builder.comment("Whether to randomize the generation of blocks in place of cobblestone.").define("randomizeCobblestoneGeneration", true);
+        randomizeBasaltGeneration = builder.comment("Whether to randomize the generation of blocks in place of basalt.").define("randomizeBasaltGeneration", true);
         builder.build();
     }
 
@@ -39,18 +39,18 @@ public class CandyConfig {
     }
 
     public boolean shouldRandomizeStoneGeneration() {
-        return shouldRandomizeStoneGeneration.get();
+        return randomizeStoneGeneration.get();
     }
 
     public boolean shouldRandomizeObsidianGeneration() {
-        return shouldRandomizeObsidianGeneration.get();
+        return randomizeObsidianGeneration.get();
     }
 
     public boolean shouldRandomizeCobblestoneGeneration() {
-        return shouldRandomizeCobblestoneGeneration.get();
+        return randomizeCobblestoneGeneration.get();
     }
 
     public boolean shouldRandomizeBasaltGeneration() {
-        return shouldRandomizeBasaltGeneration.get();
+        return randomizeBasaltGeneration.get();
     }
 }
