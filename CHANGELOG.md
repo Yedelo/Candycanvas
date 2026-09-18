@@ -1,5 +1,3 @@
-## **2.0.0**
+## **2.0.1**
 
-- Renamed mod to Candycanvas
-- Added randomized explosions
-- Moved different features into different categories
+- Add 26.3 support
