@@ -27,6 +27,7 @@ public class CandyConfig {
     public Supplier<Boolean> randomizeBasaltGeneration;
 
     public Supplier<Boolean> randomizeExplosions;
+    public Supplier<Boolean> randomizeFrostWalker;
 
     public void initialize() {
         IConfigBuilder builder = ConfigBuilders.newJsonConfig("candycanvas", "Candycanvas", false);
@@ -42,6 +43,10 @@ public class CandyConfig {
 
         builder.push("Explosions").categoryComment("Randomize the outcome of explosions");
         randomizeExplosions = builder.comment("Toggle explosions.").define("randomizeExplosions", true);
+        builder.pop();
+
+        builder.push("Other");
+        randomizeFrostWalker = builder.comment("Randomize the outcome of frost walker.").define("randomizeFrostWalker", true);
         builder.pop();
         builder.build();
     }
