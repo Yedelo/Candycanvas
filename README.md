@@ -21,3 +21,4 @@ Features can be configured under the `config/candycanvas-Candycanvas.json` file:
 - Randomize Liquid Collisions
   - Randomize stone, obsidian, cobblestone, and basalt generation individually
 - Randomize Explosions
+- Randomize Frost Walker
